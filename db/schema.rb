@@ -31,6 +31,10 @@ ActiveRecord::Schema.define(version: 20130722000119) do
   end
 
   create_table "users", force: true do |t|
+    t.integer  "host_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "passcode"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
