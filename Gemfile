@@ -39,4 +39,7 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 gem 'rspec-rails', group: [:development, :test]
-gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:test]
+gem 'capybara', group: [:test]
+gem 'fabrication', group: [:test]
+gem 'guard-rspec', group: [:test]
