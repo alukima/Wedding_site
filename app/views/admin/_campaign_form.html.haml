@@ -1,0 +1,11 @@
+%h1 Create a Crowdtilt Campaign 
+%p Creating a Crowdtilt Campaign will allow your guests to send monetary gifts through Crowdtilt
+.ct-create
+	= form_for @campaign do |f|
+		=f.text_field(:title,  placeholder:'Honeymoon Fund')
+		=f.text_field(:expiration_date, placeholder:'Date to end Campaign')
+		=f.text_field(:note, placeholder: 'Note for you guests to see')
+		=f.submit
+
+
+
