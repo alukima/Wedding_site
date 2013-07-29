@@ -1,25 +1,29 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
     (function() {    
-
+        callback = '127.0.0.1/gifts'
         //Initialize the crowdtilt object
         crowdtilt.init();
 
         var responseHandler = function(response) {
+          console.log(response)
             switch (response.status) {
                case 201:
+                  console.log(response)
                    // The card or bank was created successfully!
                    // Submit the data contained in response.card or repsonse.bank to your server for saving
                    // For bank accounts, remember to set the new account as the default in addition to saving it to your database
                    break;
                case 400:
+                  console.log(response)
                    // missing field - check response.error for details
                    break;
                case 404:
+                  console.log(response)
                    // your user_id is incorrect (no user was found)
                    break;
                default:
-                   // Some other error ocurred, check response.error for details
+                   console.log(response)
             }
         }
 

@@ -13,6 +13,13 @@ Bundler.require(:default, Rails.env)
 
 module RsvpOnline
   class Application < Rails::Application
+      config.crowdhoster_app_name = ENV['APP_NAME'] || 'crowdhoster_anonymous'
+
+    #Crowdtilt API key/secret
+    config.crowdtilt_sandbox_key = ENV['CROWDTILT_SANDBOX_KEY']
+    config.crowdtilt_sandbox_secret = ENV['CROWDTILT_SANDBOX_SECRET']
+    config.crowdtilt_production_key = ENV['CROWDTILT_PRODUCTION_KEY']
+    config.crowdtilt_production_secret = ENV['CROWDTILT_PRODUCTION_SECRET']
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
