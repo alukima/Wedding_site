@@ -10,6 +10,7 @@ RsvpOnline::Application.routes.draw do
 
   #admin
   match '/admin', to: 'admin#settings', via: 'get'
+  match '/verify_admin', to: 'admin#verify_admin', via: 'post'
   match '/sign_in', to: 'session#sign_in', via: 'get'
   match '/sign_out', to: 'session#sign_out', via: 'get'
 
@@ -17,11 +18,15 @@ RsvpOnline::Application.routes.draw do
   match '/gift/amount',                to: 'campaigns#checkout_amount',             via: 'get'
   match '/gift/payment',               to: 'campaigns#checkout_payment',            via: 'get'
   match '/gift/confirmation',          to: 'campaigns#checkout_confirmation',       via: 'get'
+  match '/campaign/new_user',          to: 'campaigns#user',       via: 'post'
+  match '/campaign/find_user',          to: 'campaigns#user',       via: 'get'
 
   #guests
   resources :users
   resources :weddings
+  resources :campaigns
   resources :session, :only => [:create, :destroy]
+
  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

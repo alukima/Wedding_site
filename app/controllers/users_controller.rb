@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       # UserMailer.signup_confirmation(@user.id).deliver
       redirect_to admin_path, notice: "You've successfully signed up!"
     else
-      puts @user.errors.full_messages
       flash[:errors] = @user.errors.messages
       render 'session/sign_in'
     end

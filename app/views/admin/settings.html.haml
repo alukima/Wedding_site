@@ -11,7 +11,10 @@
 				%a{:href=>"#panel2" } Crowdtilt Gifts
 			.content{:data => {'section-content' => true}}  
 				%p 
-					
+					- if @campaign 
+						= render 'admin/campaign_details'
+					- else
+						%a.button.ct-create{:href=>"/campaigns/new" } 
 
 
 

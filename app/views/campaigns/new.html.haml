@@ -1,0 +1,13 @@
+%h1 Create a new Campaign 
+%p Set up a Crowdtilt Account
+.ct-admin-verify
+	=form_tag verify_admin_path, :method => :post do
+		=text_field_tag(:name, 'Full legal name')
+		=text_field_tag(:DOB,'Date of birth')
+		=text_field_tag(:phone_number,'Telephone number')
+		=text_field_tag(:street_address,'Your street address')
+		=text_field_tag(:postal_code,'Your postal code')
+		=submit_tag 
+
+
+
