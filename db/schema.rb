@@ -51,12 +51,12 @@ ActiveRecord::Schema.define(version: 20130729052304) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                         null: false
-    t.string   "password_hash",                 null: false
+    t.string   "email",                           null: false
+    t.string   "password_digest",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.boolean  "is_admin",      default: false
+    t.boolean  "is_admin",        default: false
     t.integer  "host_id"
   end
 

@@ -1,7 +1,28 @@
 RsvpOnline::Application.routes.draw do
-  resources :guests
-  resources :gifts
-  root 'application#index'
+  root 'weddings#home'
+
+  #wedding
+  match '/', to: 'weddings#home', via: 'get'
+  match '/venue', to: 'weddings#venue', via: 'get'
+  match '/events', to: 'weddings#events', via: 'get'
+  match '/rsvp', to: 'weddings#rsvp', via: 'get'
+  match '/photos', to: 'weddings#photos', via: 'get'
+
+  #admin
+  match '/admin', to: 'admin#settings', via: 'get'
+  match '/sign_in', to: 'session#sign_in', via: 'get'
+  match '/sign_out', to: 'session#sign_out', via: 'get'
+
+  #campaigns
+  match '/gift/amount',                to: 'campaigns#checkout_amount',             via: 'get'
+  match '/gift/payment',               to: 'campaigns#checkout_payment',            via: 'get'
+  match '/gift/confirmation',          to: 'campaigns#checkout_confirmation',       via: 'get'
+
+  #guests
+  resources :users
+  resources :weddings
+  resources :session, :only => [:create, :destroy]
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

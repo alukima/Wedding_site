@@ -13,7 +13,7 @@ Bundler.require(:default, Rails.env)
 
 module RsvpOnline
   class Application < Rails::Application
-      config.crowdhoster_app_name = ENV['APP_NAME'] || 'crowdhoster_anonymous'
+    config.crowdhoster_app_name = ENV['APP_NAME'] || 'crowdhoster_anonymous'
 
     #Crowdtilt API key/secret
     config.crowdtilt_sandbox_key = ENV['CROWDTILT_SANDBOX_KEY']
@@ -23,7 +23,7 @@ module RsvpOnline
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    config.autoload_paths += Dir["#{config.root}/app/controllers/concerns", "#{config.root}/app/models/concerns"] 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
