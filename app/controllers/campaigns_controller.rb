@@ -4,6 +4,12 @@ class CampaignsController < ApplicationController
 		@campaign = Campaign.new
 	end
 
+	def show
+		@wedding = Wedding.first
+		@campaign = Campaign.first
+		@payment = Payment.new
+	end
+
 	def create
 		@campaign = Campaign.new(campaign_params)
 		if @campaign.save
@@ -27,19 +33,21 @@ class CampaignsController < ApplicationController
 		end
 	end
 
-	def checkout_amount
-
+	def gift_payment
+		# def survey_params
+  #     params.require(:survey).permit(:name, 
+  #       :questions_attributes => [:id, :content, 
+  #         :answers_attributes => [:id, :answer, :participant_id]
+  #       ])
+  #   end
 	end
 
-	def checkout_payment
-
-	end
-
-	def checkout_confirmation
+	def gift_confirmation
 
 	end
 
 	private
+
 	def campaign_params
 		params.require(:campaign).permit(:title,:expiration_date, :note, :image_file_name)
 	end

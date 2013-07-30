@@ -15,9 +15,9 @@ RsvpOnline::Application.routes.draw do
   match '/sign_out', to: 'session#sign_out', via: 'get'
 
   #campaigns
-  match '/gift/amount',                to: 'campaigns#checkout_amount',             via: 'get'
-  match '/gift/payment',               to: 'campaigns#checkout_payment',            via: 'get'
-  match '/gift/confirmation',          to: 'campaigns#checkout_confirmation',       via: 'get'
+  match '/gift/send',                to: 'campaigns#show',             via: 'get'
+  match '/gift/payment',               to: 'campaigns#gift_payment',            via: 'get'
+  match '/gift/confirmation',          to: 'campaigns#gift_confirmation',       via: 'get'
   match '/campaign/new_user',          to: 'campaigns#user',       via: 'post'
   match '/campaign/find_user',          to: 'campaigns#user',       via: 'get'
 
@@ -25,6 +25,7 @@ RsvpOnline::Application.routes.draw do
   resources :users
   resources :weddings
   resources :campaigns
+  resources :payments
   resources :session, :only => [:create, :destroy]
 
  

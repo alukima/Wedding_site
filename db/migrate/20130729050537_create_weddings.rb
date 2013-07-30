@@ -26,3 +26,6 @@ end
 # links to other registrations
 # photo page for guests
 # social media profiles
+# groom_name
+# bride_name
+# couple_name
