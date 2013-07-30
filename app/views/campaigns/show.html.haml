@@ -1,24 +1,33 @@
 %h1.fancy Send a gift to #{@wedding.couple_name}
-%p Payments are processed through Crowdtilt
-=	form_for @payment do |f|
-	= f.email_field(:email, placeholder: 'email')
-	= f.submit
+.large-12.columns	
+	%p Payment processing provided by Crowdtilt
+	=	form_for @payment do |f|
+		= f.email_field(:email, placeholder: 'email')
+		= f.text_field(:fullname, placeholder: 'name')
+		= f.text_field(:amount, placeholder: 'gift amount')
+		%input{:type => "number", :name => "security_code"}
+		= f.month_field(:card_expiration_month)
+		= f.select(:card_expiration_year, [2013...2025])
+		= f.submit
 
 
 
 
 
+/ PUT /users/:id/cards/:id
 
 
 
-
-
+/schema
 / create_table :payments, :force => true  do |t|
-/ 			t.string   "ct_payment_id"
+
 / 			t.string   "status"
 / 			t.integer  "amount"
 / 			t.string   "fullname"
 / 			t.string   "email"
+/ 			t.timestamps
+
+
 / 			t.string   "card_type"
 / 			t.string   "card_last_four"
 / 			t.string   "card_expiration_month"
@@ -30,6 +39,18 @@
 / 			t.string   "state"
 / 			t.string   "postal_code"
 / 			t.string   "country"
-/ 			t.integer  "quantity"
-/ 			t.text     "additional_info"
-/ 			t.timestamps
+/ 			t.string   "ct_payment_id"
+/ {
+/     "card": {
+/         "id" : "CCP6D6E7E7C0C5C11E2BD7001E2CFE628C0",
+/         "last_four" : "1111",
+/         "expiration_year" : 2023,
+/         "expiration_month" : "01",
+/         "user": { "id" : "USR50A", "uri" : "/v1/users/USR50A", ... },
+/         "uri" : "/v1/users/USR50A/cards/CCP6D6",
+/         "card_type" : "VISA card",
+/         "creation_date" : "2012-08-23T07:42:46.134467000Z",
+/         "modification_date" : "2012-09-23T07:42:46.134467000Z",
+/         "metadata" : {}
+/     }
+/ }

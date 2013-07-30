@@ -16,7 +16,7 @@ RsvpOnline::Application.routes.draw do
 
   #campaigns
   match '/gift/send',                to: 'campaigns#show',             via: 'get'
-  match '/gift/payment',               to: 'campaigns#gift_payment',            via: 'get'
+  match '/gift/payment',               to: 'campaigns#process_payment',            via: 'get'
   match '/gift/confirmation',          to: 'campaigns#gift_confirmation',       via: 'get'
   match '/campaign/new_user',          to: 'campaigns#user',       via: 'post'
   match '/campaign/find_user',          to: 'campaigns#user',       via: 'get'
