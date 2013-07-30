@@ -12,6 +12,9 @@ class CampaignsController < ApplicationController
 
 	def create
 		@campaign = Campaign.new(campaign_params)
+		if current_user.ct_id.nil?
+			user = Crowdtilt.create_user(email: current_user.email)
+		end
 		if @campaign.save
 			campaign ={
 				title: @campaign.title,
@@ -22,7 +25,7 @@ class CampaignsController < ApplicationController
 			begin
 				#Crowdtilt.production
 				response = Crowdtilt.post('/campaigns', {campaign: campaign})
-				@campaign.update_attributes!(ct_campaign_id: response["campaign"]["id"])
+				@campaign.update_attributes!(ct_campaign_id: user["campaign"]["id"])
 				redirect_to admin_path
 			rescue => exception
 				flash.now[:error] = exception.to_s
@@ -33,13 +36,8 @@ class CampaignsController < ApplicationController
 		end
 	end
 
-	def gift_payment
-		# def survey_params
-  #     params.require(:survey).permit(:name, 
-  #       :questions_attributes => [:id, :content, 
-  #         :answers_attributes => [:id, :answer, :participant_id]
-  #       ])
-  #   end
+	def process_payment
+	
 	end
 
 	def gift_confirmation
@@ -53,6 +51,26 @@ class CampaignsController < ApplicationController
 	end
 end
 
+ # t.string   "ct_payment_id"
+ #    t.string   "status"
+ #    t.integer  "amount"
+ #    t.string   "fullname"
+ #    t.string   "email"
+ #    t.string   "card_type"
+ #    t.string   "card_last_four"
+ #    t.string   "card_expiration_month"
+ #    t.string   "card_expiration_year"
+ #    t.integer  "campaign_id"
+ #    t.string   "address_one"
+ #    t.string   "address_two"
+ #    t.string   "city"
+ #    t.string   "state"
+ #    t.string   "postal_code"
+ #    t.string   "country"
+ #    t.integer  "quantity"
+ #    t.text     "additional_info"
+ #    t.datetime "created_at"
+ #    t.datetime "updated_at"
 
 #schema
     # t.string   "title"

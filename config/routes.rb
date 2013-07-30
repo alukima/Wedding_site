@@ -2,24 +2,23 @@ RsvpOnline::Application.routes.draw do
   root 'weddings#home'
 
   #wedding
-  match '/', to: 'weddings#home', via: 'get'
-  match '/venue', to: 'weddings#venue', via: 'get'
-  match '/events', to: 'weddings#events', via: 'get'
-  match '/rsvp', to: 'weddings#rsvp', via: 'get'
-  match '/photos', to: 'weddings#photos', via: 'get'
+  match '/',        to: 'weddings#home',    via: 'get'
+  match '/venue',   to: 'weddings#venue',   via: 'get'
+  match '/events',  to: 'weddings#events',  via: 'get'
+  match '/rsvp',    to: 'weddings#rsvp',    via: 'get'
+  match '/photos',  to: 'weddings#photos',  via: 'get'
 
   #admin
-  match '/admin', to: 'admin#settings', via: 'get'
+  match '/admin',        to: 'admin#settings',     via: 'get'
   match '/verify_admin', to: 'admin#verify_admin', via: 'post'
-  match '/sign_in', to: 'session#sign_in', via: 'get'
-  match '/sign_out', to: 'session#sign_out', via: 'get'
+  match '/sign_in',      to: 'session#sign_in',    via: 'get'
+  match '/sign_out',     to: 'session#sign_out',   via: 'get'
 
   #campaigns
-  match '/gift/send',                to: 'campaigns#show',             via: 'get'
-  match '/gift/payment',               to: 'campaigns#process_payment',            via: 'get'
-  match '/gift/confirmation',          to: 'campaigns#gift_confirmation',       via: 'get'
-  match '/campaign/new_user',          to: 'campaigns#user',       via: 'post'
-  match '/campaign/find_user',          to: 'campaigns#user',       via: 'get'
+  match '/gift/send',                to: 'campaigns#show',                                        via: 'get'
+  match '/gift/payment/:id',         to: 'campaigns#process_payment',   as: '/gift/payment',      via: 'get'
+  match '/gift/confirmation/:id',    to: 'campaigns#gift_confirmation', as: '/gift/confirmation', via: 'get'
+  match '/campaign/find_user',       to: 'campaigns#user',                                        via: 'get'
 
   #guests
   resources :users

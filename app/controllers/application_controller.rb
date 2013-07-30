@@ -6,4 +6,16 @@ class ApplicationController < ActionController::Base
   include CurrentUser
 
   helper_method :current_user
+
+  private
+
+  def campaign_id
+  	Wedding.first.ct_campaign_id
+  end
+
+  def check_user
+  	if current_user.ct_id.nil?
+			Crowdtilt.create_user(email: current_user.email)
+		end
+	end
 end
