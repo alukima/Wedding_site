@@ -1,8 +1,7 @@
 module Crowdtilt
 
 	def self.sandbox
-		self.configure api_key: 'c3afb05a171cfa532916fca9a70557',
-	                 api_secret: '466121cec9a2f0d7e644b4366a9f70de38a2f6f3',
+		self.configure 
 	                 mode: 'sandbox'
 	end
 	
